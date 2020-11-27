@@ -1,4 +1,6 @@
-package at.institution.projectname;
+package at.wg.chatprogramm;
+
+import java.util.Scanner;
 
 import org.apache.log4j.PropertyConfigurator;
 
@@ -11,5 +13,16 @@ public class Main
 		PropertyConfigurator.configure(log4jConfPath);
 		
 		System.out.println( "Hello World!" );
-	}
+		
+		Userinterface ui1 = new Userinterface();
+		
+		
+		
+		
+		
+		
+		
+	
+		
+	}	
 }

@@ -1,4 +1,4 @@
-package at.institution.projectname;
+package at.wg.chatpgrogramm;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
