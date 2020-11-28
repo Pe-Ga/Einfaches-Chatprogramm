@@ -29,7 +29,17 @@ private void init() {
 }
 
 private boolean send(Message msg1) {
-	 String fileSeperator = "\\";
+	
+	 String fileSeperatorW = "\\";
+	 String fileSeperatorL = "/";
+	 String fileSeperator;
+	 
+	 if(OSValidator.isWindows()) {
+		 fileSeperator = fileSeperatorW;
+	} else {
+		fileSeperator = fileSeperatorL;
+	}
+	 
 	 String messagePath =  this.server + fileSeperator + msg1.recepient +".txt";
 	 boolean returnValue;
 	 
