@@ -12,7 +12,7 @@ public class Main
 		String log4jConfPath = "./src/main/resources/log4j.properties";
 		PropertyConfigurator.configure(log4jConfPath);
 		
-		System.out.println( "Hello World!" );
+		System.out.println( "Welcome to \"Einfaches Chatprogramm\" . . . " );
 		
 		Userinterface ui1 = new Userinterface();
 		

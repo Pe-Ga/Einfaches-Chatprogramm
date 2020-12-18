@@ -1,7 +1,9 @@
 package at.wg.chatprogramm;
 
-import java.io.FileWriter;
+import java.io.*;
 import java.util.Scanner;
+
+import org.apache.log4j.PropertyConfigurator;
 
 public class Userinterface {
 	
@@ -27,6 +29,29 @@ private void init() {
 	
 
 }
+
+//private changeConfig Methode wo user und server übergeben wird
+
+// 2. methode saveConfig speichert config und bekommt von changeConfig Daten
+
+
+private void createConfigFile() {
+	
+	try {
+		FileWriter config = new FileWriter("Config.txt");
+		config.write(this.user + "\n" + this.server );
+		config.close();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+}
+
+private void readConfigFile() {
+	
+}
+
 
 private boolean send(Message msg1) {
 	
@@ -69,4 +94,106 @@ private Message getMsg(){
 		return msg1;
 	}
 
+
+// Lese-Methode
+private Message readMsg() {
+	
+	Message returnValue = null;
+//	Message msg2 = new Message
+	
+	// Name des Empfängers  = user - dateipfad!
+	//Dateipfad richtig?
+	
+	//namen checken, 
+	 
+	 String fileSeperatorW = "\\";
+	 String fileSeperatorL = "/";
+	 String fileSeperator;
+	 
+	 if(OSValidator.isWindows()) {
+		 fileSeperator = fileSeperatorW;
+	} else {
+		fileSeperator = fileSeperatorL;
+	}
+	 
+	 String messagePath =  this.server + fileSeperator + user +".txt";
+
+	 
+	File file = new File("C:\\Users\\Lenovo\\Desktop\\Server\\" + user + ".txt"); // +user
+	
+	if(file.exists()) {
+		
+		BufferedReader br = null;
+		
+		try {
+			br = new BufferedReader(new FileReader(file));
+			
+			String st; 
+			String txt = "";
+			try {
+				while ((st = br.readLine()) != null) {
+					System.out.println(st);
+					txt = txt + st;
+					}
+				
+			returnValue = new Message(txt, user);
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+			
+	}else {
+	   returnValue = null;
+	}
+	
+	return returnValue;
 }
+
+private void receive() {
+	Message read = readMsg();
+	if (read != null) {
+	 System.out.println(read.getTxt());
+	}
+}
+	
+public static void main(String[] args)
+	{
+		Userinterface face = new Userinterface();		
+		face.receive();
+	}	
+}
+
+
+	  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

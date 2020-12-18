@@ -12,6 +12,21 @@ public class Message {
 		this.txt = txt;
 		this.recepient = recepient;
 	}
+
+	public String getTxt() {
+		if(txt == null) {
+		return "";
+		}else {
+		return txt;
+		}
+		
+	}
+
+	public void setTxt(String txt) {
+		this.txt = txt;
+	}
+	
+	
 	
 	// Methoden
 	
